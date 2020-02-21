@@ -1,0 +1,87 @@
+##PHP
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<title>Web</title>
+</head>
+
+<body>
+	<?php
+		$base = parse_ini_file("./ini/datos.ini");		
+		$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);
+		$con = $php->prepare("SELECT * from imagenes;");
+		$con->execute();
+		$registros = $con->fetchAll(PDO::FETCH_NUM);
+		$php = null;
+		
+		$n = count($registros);
+		$imagen = $registros[0][1];
+		$str = "$imagen";
+		echo base64_encode($str);ç
+    $imgBuff = $img->getimageblob();
+		$img->clear();
+		$img = base64_encode($imgBuff);
+		echo "<img alt='Embedded Image' src='data:image/jpeg;base64,$img' />";
+	?>
+	<section>
+		<img alt="La imagen no se puede mostrar" src="rec/<?php echo $imagen; ?>" width="100" height="100"" />
+	</section>
+</body>
+
+</html>
+
+
+
+
+#####SQL
+
+
+-- phpMyAdmin SQL Dump
+-- version 3.4.5
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 14-09-2012 a las 17:52:54
+-- Versión del servidor: 5.5.16
+-- Versión de PHP: 5.3.8
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `p008`
+--
+CREATE DATABASE `p008` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `p008`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagenes`
+--
+
+CREATE TABLE IF NOT EXISTS `imagenes` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `imagen` longtext COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`codigo`, `imagen`) VALUES
+(XO+Ja8ca0rQH2phjbXljFXjaErxPFtvkcrlE25uLLAivRL/pWvao2VaDbfY9cAIZyg\r\nenpVI3au8h5fs1HTKp13OdhJreW6u1zMKcpKqOtPfIDEOgbZZjHmVNb6Ltuw6AjqMkcBLT+fhHl6\r\nlst48pCtDUt4Ef1yQwiI2LTLWmZrgVVHwcVt6V6g7/1yBG98TlRlUaEFFlaEl0tyHAr8O368mKO1\r\nuPIyjvGHDJTF5dyfDLG/HxAX+mS4IDkWiOqzS+qE+FRklUt8ULAj/JH45ZEebjZcu/0Tj/mK1vJa\r\n1+MUb3Rv4HK58XRy9PkxdR6v+FyRq/V3P7u4aI+Cg0/HKZSkP4eJzxGEj6ZSgpTJKKlLsEnrywxk\r\nDzi15Mcx9OT/AE61beRyvO5Qk+236sl4gH8MmsaeZ3M4X/VRK2sdOMlwpPgtP4nKTlPSLlxw/wA6\r\nXEpqjoW9JgD0qOJ2+7JWDzWMCPpUHgvjU+q/3UH4ZZGcb5RcSenymzx5ENJaMtGkkYt4VNcuGS+Q\r\ncHJozzlOXEirYyhaKxp/l/1OVTrqHOwRlVCUv89Yw6kvxbtkwfJqyQI3MlOQntRq9STXLHEMj04Z\r\nrPiHTiD4AYtZEh/NbB7MvX+WuJCQJdQ5zQfZJB6jpjSakB9MpIcFmJCxqtP5jkvi4u5O0RH+s2pn\r\n6UU4dlBy9zapyPxCnv1xYxj3hzwL40xEmMsMVFrfavqN8hkraTiHfJQMMVftt92Gy1HFD+dL/SuE\r\nSg/C7V8MbY+HHoZIhY3Xq5wEuRHGe9eBXrXxyNt0YFxVepFTjaRBzcVFScQxkQOaz1Ijtt9+SosB\r\nOBa/dDeu/wA647sLiHclrtgpInFdyp2+muNM+JcGqvU4GVkrS9O+/wAsNMDNcHJG5HvgIZRnbYav\r\nfA2cXm4Gvf6MWN31ap9+FeFTfl2qfuyQaJgth37KR7VGDZeKQdz8a40nxD1cSKb1p7YrYK0ulKVP\r\nyxooE4jqW+SE7Ggx3TcTyWsJB9k7dqUwimB4uiwtPXrt8sNBrMptercU+EDBQT4s3CWUn4lHzw0x\r\nE5LjVupp92BnRLfpx98bT4ceq1o0G4xthLHEcm+K03piy4RTVE9sd1Ai792K9K4d2PpD/9k=');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
